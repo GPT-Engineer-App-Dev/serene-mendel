@@ -17,7 +17,10 @@ const fetchHackerNews = async () => {
 const Index = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('points');
-  const { data, isLoading, error } = useQuery(['hackerNews'], fetchHackerNews);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['hackerNews'],
+    queryFn: fetchHackerNews,
+  });
   const [filteredStories, setFilteredStories] = useState([]);
 
   useEffect(() => {
